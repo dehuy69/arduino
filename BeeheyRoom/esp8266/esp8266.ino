@@ -8,7 +8,7 @@
 const char* ssid = "Wifi";// tên wifi mà bạn muốn connect
 const char* pass = "123$%^baytamchin"; //pass wifi
 
-const char* server = "192.168.1.1"; //Dùng tên miền dns
+const char* server = "192.168.1.43"; //Dùng tên miền dns
 //IPAddress server(74,125,232,128); // Dùng Ip
 char url[100];
 char data[1000];
