@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @csrf_exempt
-def recorgnize(request):
+def recognize(request):
     if request.method == 'POST':
         user = request.POST.get('username')
         password = request.POST.get('password')
