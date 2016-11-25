@@ -1,0 +1,2 @@
+Module {pin_used, note}
+flowmeter {2,interrupt 0}
