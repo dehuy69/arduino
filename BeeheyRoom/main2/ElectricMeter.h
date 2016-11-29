@@ -5,26 +5,17 @@
 #include <FloatDefine.h>
 #include <RunningStatistics.h>
 
-class ELECTRICMETER
-{
-public:
-  int kwatth;
-};
-
-ELECTRICMETER ELECTRICMETER;
-
 int PinAnalog = A0;
 int testFrequency;  // nhà bạn dùng điện bao nhiêu Hz? Ở VN là 60Hz
 float windowLength; // mỗi tín hiệu thu về cách nhau bao nhiêu thời gian
 int sensorValue;
 float amps; // giá trị cường độ dòng điện thực sự được đo lường
 float watts;
-float voltage;
+float kwatth;
 
 // lần cuối in kết quả là thời điển nào (tính theo ms)
 unsigned long previousMillis;
 unsigned long previousMillis1;
-
 RunningStatistics inputStats; // tạo đối tượng để đo lường
 
 void ElectricMeter_Setup()
@@ -34,19 +25,20 @@ void ElectricMeter_Setup()
   sensorValue = 0;
   amps = 0; // giá trị cường độ dòng điện thực sự được đo lường
   watts = 0;
-  ELECTRICMETER.kwatth = 0;
-  voltage = 0;
+  kwatth = 0;
+
   // lần cuối in kết quả là thời điển nào (tính theo ms)
   previousMillis = 0;
   inputStats.setWindowSecs(windowLength);
+
 }
 
-void ElectricMeter_Loop()
+void Loop()
 {
 
-  sensorValue = analogRead(PinAnalog);       //đọc giá trị
-  inputStats.input(sensorValue);             // đưa nó vào bộ kiểm tra
-  voltage = inputStats.sigma() * 5.2 / 1024; // von
+  sensorValue = analogRead(PinAnalog);             //đọc giá trị
+  inputStats.input(sensorValue);                   // đưa nó vào bộ kiểm tra
+  float voltage = inputStats.sigma() * 5.2 / 1024; // von
 
   //float voltage = inputStats.sigma() - 2.5; // von, offset voltage is 2.5v
 
@@ -56,7 +48,7 @@ void ElectricMeter_Loop()
   {
     previousMillis = millis(); // cập nhập thời điểm cuối in giá trị
     watts += amps * 220;
-    ELECTRICMETER.kwatth = watts / 1000 / 3600;
+    kwatth = watts / 1000 / 3600;
     /*
       Serial.print(voltage);
       Serial.println("von");
@@ -67,3 +59,4 @@ void ElectricMeter_Loop()
     */
   }
 }
+
