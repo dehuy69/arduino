@@ -1,0 +1,25 @@
+Usage: build_arduino.py [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -d DIRECTORY, --directory=DIRECTORY
+                        project directory
+  -v, --verbose         be verbose
+  --only-build          only build, don't upload
+  -u DEVICE, --upload-device=DEVICE
+                        use DEVICE to upload code
+  -i DIRECTORY, --include=DIRECTORY
+                        append DIRECTORY to include list
+  -l DIRECTORY, --libraries=DIRECTORY
+                        append DIRECTORY to libraries search & build path
+  -W DIRECTORY, --WProgram-dir=DIRECTORY
+                        DIRECTORY of WProgram.h and the rest of core files
+  --avr-path=DIRECTORY  DIRECTORY where avr* programs located, if not
+                        specified - will assume found in default search path
+  --dude-conf=FILE      avrdude conf file, if not specified - will assume
+                        found in default location
+  --simulate            only simulate commands
+  --core=CORE           device core name [arduino]
+  --arch=ARCH           device architecture name [atmega328p]
+  --baud=BAUD           upload baud rate [57600]
+  --cpu-clock=Hz        target device CPU clock [16000000]
