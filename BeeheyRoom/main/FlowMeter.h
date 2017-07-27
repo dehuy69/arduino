@@ -14,7 +14,7 @@ int totalLitres;
 
 int sensorInterrupt = 0; // 0 = digital pin 2
 int sensorPin = 2;
-float calibrationFactor = 4.5;
+float calibrationFactor = 6;
 float flowRate;
 unsigned int flowMilliLitres;
 unsigned long totalMilliLitres;
