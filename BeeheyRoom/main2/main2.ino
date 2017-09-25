@@ -34,7 +34,7 @@ unsigned long oldTime;
 
 FlowMeter flowmeter;
 ElectricMeter electricmeter;
-
+void ElectricMeter_Setup();
 void setup() {
   Serial.begin(9600);
   // Setup
